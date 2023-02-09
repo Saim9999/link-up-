@@ -67,7 +67,7 @@ class AuthController extends GetxController {
   final globalkey = GlobalKey<FormState>().obs;
   CollectionReference? imgCollectionRef;
   firebase_storage.Reference? ref;
-  firebase_storage.Reference? ref2;
+  // firebase_storage.Reference? ref2;
 
   final ImagePicker picker = ImagePicker();
   List<File>? imageList;

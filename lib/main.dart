@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:linkup_newscreens/linkup%20new%20screens/SponsorImage.dart';
 import 'linkup new screens/Createopenevents.dart';
 
 void main()async {
@@ -14,11 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
+    return GetMaterialApp(debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: CreateOpenEvent());
+        home: SponsorImage());
   }
 }

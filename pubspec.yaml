@@ -46,6 +46,7 @@ dependencies:
   firebase_storage: ^11.0.10
   fluttertoast: ^8.1.2
   image_picker: ^0.8.5+3
+  image_cropper: ^3.0.1
   path: ^1.8.1
 
 dev_dependencies:
