@@ -115,39 +115,42 @@ class _CreateEventState extends State<CreateEvent> {
               onTap: () {
                 pickMultiImages();
               },
-              child: authController.imageList != null
-                  ? Image.file(
-                      authController.imageList![0],
-                      fit: BoxFit.fill,
-                    )
-                  : Container(
-                      height: 130.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/Group 163959 (4).png'),
-                              fit: BoxFit.fill)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.add,
-                              size: 42,
-                              color: Colors.white,
+              child: ClipPath(
+                clipper: MyClipper(),
+                child: Container(
+                  height: 130.h,
+                  width: double.infinity,
+                  color: const Color.fromARGB(255, 56, 171, 216),
+                  child: Container(
+                    height: 210.h,
+                    decoration: const BoxDecoration(),
+                    child: authController.imageList != null
+                        ? Image.file(
+                            authController.imageList![0],
+                            fit: BoxFit.cover,
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.add,
+                                  size: 42,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  "Upload Cover Image",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Upload Cover Image",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                          ),
+                  ),
+                ),
+              ),
             ),
             Form(
                 key: authController.globalkey.value,
@@ -170,13 +173,11 @@ class _CreateEventState extends State<CreateEvent> {
                               },
                               controller: authController.eventtitleController,
                               decoration: InputDecoration(
+                                  border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "Event Title",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           largetext('Description'),
                           Padding(
@@ -190,42 +191,47 @@ class _CreateEventState extends State<CreateEvent> {
                               },
                               controller: authController.descriptionController,
                               decoration: InputDecoration(
+                                  border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "Description",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
                           InkWell(
                             onTap: () {
                               pickMultiImages2();
                             },
-                            
                             child: Center(
                               child: Container(
-                                height: 100.h,
-                                width: 100.w,
+                                height: 140,
+                                width: 140,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(60),
-                                    border: Border.all(
-                                        color:
-                                            Color.fromARGB(255, 56, 170, 215),
-                                        width: 2)),
-                                child: authController.imageList2 != null
-                                    ? Image.file(
-                                        authController.imageList2![0],
-                                        fit: BoxFit.fill,
-                                      )
-                                    : Center(
-                                        child: Icon(
-                                          Icons.add,
-                                          color:
-                                              Color.fromARGB(255, 56, 170, 215),
-                                          size: 30,
+                                  borderRadius: BorderRadius.circular(80),
+                                  border: Border.all(
+                                    width: 2,
+                                    color: Color.fromARGB(255, 56, 170, 215),
+                                  ),
+                                ),
+                                child: ClipOval(
+                                  child: authController.imageList2 != null
+                                      ? Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(60)),
+                                          child: Image.file(
+                                            authController.imageList2![0],
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      : Center(
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Color.fromARGB(
+                                                255, 56, 170, 215),
+                                            size: 30,
+                                          ),
                                         ),
-                                      ),
+                                ),
                               ),
                             ),
                           ),
@@ -249,13 +255,11 @@ class _CreateEventState extends State<CreateEvent> {
                               controller:
                                   authController.eventcategoryController,
                               decoration: InputDecoration(
+                                  border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "Coorporate",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           largetext('Event Address'),
                           Padding(
@@ -270,13 +274,11 @@ class _CreateEventState extends State<CreateEvent> {
                               scrollPadding: EdgeInsets.all(20),
                               controller: authController.eventaddress,
                               decoration: InputDecoration(
+                                  border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "Address",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           largetext('Event Type'),
                           Padding(
@@ -291,13 +293,11 @@ class _CreateEventState extends State<CreateEvent> {
                                 scrollPadding: EdgeInsets.all(20),
                                 controller: authController.eventtypeController,
                                 decoration: InputDecoration(
+                                    border: InputBorder.none,
                                     contentPadding: EdgeInsets.only(left: 15),
                                     hintText: "Type",
                                     hintStyle: TextStyle(fontSize: 10.sp)),
                               )),
-                          SizedBox(
-                            height: 15.h,
-                          ),
                           Row(
                             children: [
                               Expanded(
@@ -324,6 +324,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   controller:
                                       authController.starttimeController,
                                   decoration: InputDecoration(
+                                      border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "05:00 PM",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -347,6 +348,7 @@ class _CreateEventState extends State<CreateEvent> {
                                     controller:
                                         authController.startdateController,
                                     decoration: InputDecoration(
+                                        border: InputBorder.none,
                                         contentPadding:
                                             EdgeInsets.only(left: 15),
                                         hintText: "Date",
@@ -364,9 +366,6 @@ class _CreateEventState extends State<CreateEvent> {
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           Row(
                             children: [
@@ -393,6 +392,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   },
                                   controller: authController.endtimeController,
                                   decoration: InputDecoration(
+                                      border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "10:00 PM",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -416,6 +416,7 @@ class _CreateEventState extends State<CreateEvent> {
                                     controller:
                                         authController.enddateController,
                                     decoration: InputDecoration(
+                                        border: InputBorder.none,
                                         contentPadding:
                                             EdgeInsets.only(left: 15),
                                         hintText: "Date",
@@ -433,9 +434,6 @@ class _CreateEventState extends State<CreateEvent> {
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           largetext('Event is free'),
                           SizedBox(
@@ -475,9 +473,6 @@ class _CreateEventState extends State<CreateEvent> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
                           Row(
                             children: [
                               Expanded(
@@ -500,6 +495,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   controller:
                                       authController.earlybirdeconomyController,
                                   decoration: InputDecoration(
+                                      border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "\$0000",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -519,15 +515,13 @@ class _CreateEventState extends State<CreateEvent> {
                                     controller: authController
                                         .erlybrdEcnmySeatController,
                                     decoration: InputDecoration(
+                                        border: InputBorder.none,
                                         hintText: "2",
                                         hintStyle: TextStyle(fontSize: 10.sp)),
                                   ),
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           Row(
                             children: [
@@ -550,6 +544,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   controller:
                                       authController.earlybirdVipController,
                                   decoration: InputDecoration(
+                                      border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "\$0000",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -569,15 +564,13 @@ class _CreateEventState extends State<CreateEvent> {
                                     controller:
                                         authController.erlybrdVipseatController,
                                     decoration: InputDecoration(
+                                        border: InputBorder.none,
                                         hintText: "2",
                                         hintStyle: TextStyle(fontSize: 10.sp)),
                                   ),
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           Row(
                             children: [
@@ -599,6 +592,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   controller:
                                       authController.economypriceController,
                                   decoration: InputDecoration(
+                                      border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "\$0000",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -618,6 +612,7 @@ class _CreateEventState extends State<CreateEvent> {
                                     controller:
                                         authController.economyseatController,
                                     decoration: InputDecoration(
+                                        border: InputBorder.none,
                                         hintText: "2",
                                         hintStyle: TextStyle(fontSize: 10.sp)),
                                   ),
@@ -625,9 +620,7 @@ class _CreateEventState extends State<CreateEvent> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+                        
                           Row(
                             children: [
                               Expanded(child: largetext('VIP (Price)')),
@@ -647,6 +640,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   },
                                   controller: authController.vippriceController,
                                   decoration: InputDecoration(
+                                     border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "\$0000",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -666,6 +660,7 @@ class _CreateEventState extends State<CreateEvent> {
                                     controller:
                                         authController.VipSeatController,
                                     decoration: InputDecoration(
+                                       border: InputBorder.none,
                                         hintText: "2",
                                         hintStyle: TextStyle(fontSize: 10.sp)),
                                   ),
@@ -673,9 +668,7 @@ class _CreateEventState extends State<CreateEvent> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+                          
                           largetext('Early Bird Price active until (date)'),
                           Padding(
                             padding: const EdgeInsets.only(right: 15),
@@ -691,6 +684,7 @@ class _CreateEventState extends State<CreateEvent> {
                               controller:
                                   authController.earlybirddateController,
                               decoration: InputDecoration(
+                                 border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "Date",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
@@ -704,22 +698,18 @@ class _CreateEventState extends State<CreateEvent> {
                               },
                             ),
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+                          
                           largetext('EMAIL'),
                           Padding(
                             padding: const EdgeInsets.only(right: 15),
                             child: TextFormField(
                               controller: authController.emailController,
                               decoration: InputDecoration(
+                                 border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "Email",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15.h,
                           ),
                           largetext('Phone'),
                           Padding(
@@ -733,14 +723,13 @@ class _CreateEventState extends State<CreateEvent> {
                               },
                               controller: authController.phoneController,
                               decoration: InputDecoration(
+                                 border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "123 456 789",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+
                           largetext('Website'),
                           Padding(
                             padding: const EdgeInsets.only(right: 15),
@@ -753,14 +742,13 @@ class _CreateEventState extends State<CreateEvent> {
                               },
                               controller: authController.websiteController,
                               decoration: InputDecoration(
+                                 border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "www",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+                      
                           Row(
                             children: [
                               Expanded(child: largetext('Country')),
@@ -786,6 +774,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   },
                                   controller: authController.countryController,
                                   decoration: InputDecoration(
+                                     border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "Country",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -804,6 +793,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   },
                                   controller: authController.stateController,
                                   decoration: InputDecoration(
+                                     border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "State",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -824,6 +814,7 @@ class _CreateEventState extends State<CreateEvent> {
                                     },
                                     controller: authController.cityController,
                                     decoration: InputDecoration(
+                                       border: InputBorder.none,
                                         contentPadding:
                                             EdgeInsets.only(left: 15),
                                         hintText: "City",
@@ -833,9 +824,7 @@ class _CreateEventState extends State<CreateEvent> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+                       
                           largetext('Event Disclaimer'),
                           Padding(
                             padding: const EdgeInsets.only(right: 15),
@@ -848,14 +837,14 @@ class _CreateEventState extends State<CreateEvent> {
                               },
                               controller: authController.disclaimerController,
                               decoration: InputDecoration(
+
+                                 border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 15),
                                   hintText: "Event Disclaimer",
                                   hintStyle: TextStyle(fontSize: 10.sp)),
                             ),
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+            
                           Row(
                             children: [
                               Expanded(child: largetext('Event Latitude')),
@@ -877,6 +866,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   },
                                   controller: authController.latitudeController,
                                   decoration: InputDecoration(
+                                     border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "11 64 8 64 3",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -896,6 +886,7 @@ class _CreateEventState extends State<CreateEvent> {
                                   controller:
                                       authController.longitudeController,
                                   decoration: InputDecoration(
+                                     border: InputBorder.none,
                                       contentPadding: EdgeInsets.only(left: 15),
                                       hintText: "11 64 8 64 3",
                                       hintStyle: TextStyle(fontSize: 10.sp)),
@@ -903,9 +894,7 @@ class _CreateEventState extends State<CreateEvent> {
                               )
                             ],
                           ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
+                         
                           largetext('Live / Dead'),
                           TextFormField(
                             validator: (v) {
@@ -916,10 +905,12 @@ class _CreateEventState extends State<CreateEvent> {
                             },
                             controller: authController.livedeadController,
                             decoration: InputDecoration(
+                               border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 15),
                                 hintText: "live/dead",
                                 hintStyle: TextStyle(fontSize: 10.sp)),
                           ),
+
                           SizedBox(
                             height: 25.h,
                           ),
@@ -1064,6 +1055,24 @@ class _CreateEventState extends State<CreateEvent> {
       title,
       style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
     );
+  }
+}
+
+class MyClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    return Path()
+      ..lineTo(0, size.height)
+      ..quadraticBezierTo(
+          size.width / 4, size.height - 40, size.width / 2, size.height - 20)
+      ..quadraticBezierTo(
+          3 / 4 * size.width, size.height, size.width, size.height - 30)
+      ..lineTo(size.width, 0);
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
 

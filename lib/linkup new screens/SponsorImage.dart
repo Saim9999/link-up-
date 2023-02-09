@@ -109,43 +109,40 @@ class _SponsorImageState extends State<SponsorImage> {
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: TextFormField(
+                
                 controller: authController.eventimageController,
                 decoration: InputDecoration(
+                  border: InputBorder.none,
                     contentPadding: EdgeInsets.only(left: 15),
                     hintText: "Select",
                     hintStyle: TextStyle(fontSize: 10.sp)),
               ),
             ),
-            SizedBox(
-              height: 15.h,
-            ),
+            
             largetext('Name'),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: TextFormField(
                 controller: authController.nameimageController,
                 decoration: InputDecoration(
+                  border: InputBorder.none,
                     contentPadding: EdgeInsets.only(left: 15),
                     hintText: "Title",
                     hintStyle: TextStyle(fontSize: 10.sp)),
               ),
             ),
-            SizedBox(
-              height: 15.h,
-            ),
+            
             largetext('Description'),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: TextFormField(
                 controller: authController.descriptionimageController,
                 decoration: InputDecoration(
+                  border: InputBorder.none,
                     contentPadding: EdgeInsets.only(left: 15),
                     hintText: "Description",
                     hintStyle: TextStyle(fontSize: 10.sp)),
               ),
-            ),
-            SizedBox(
-              height: 50.h,
             ),
             largetext('Status live/dead'),
             Padding(
@@ -153,6 +150,7 @@ class _SponsorImageState extends State<SponsorImage> {
               child: TextFormField(
                 controller: authController.statusimageController,
                 decoration: InputDecoration(
+                  border: InputBorder.none,
                     contentPadding: EdgeInsets.only(left: 15),
                     hintText: "Live",
                     hintStyle: TextStyle(fontSize: 10.sp)),
